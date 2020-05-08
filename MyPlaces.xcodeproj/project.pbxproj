@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC233447246584A40096D90E /* MainTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC233446246584A40096D90E /* MainTableVC.swift */; };
+		EC568B712465BBE90093F431 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EC568B702465BBE90093F431 /* .gitignore */; };
 		ECB0B672246583EF005DBBD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0B671246583EF005DBBD0 /* AppDelegate.swift */; };
 		ECB0B674246583EF005DBBD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0B673246583EF005DBBD0 /* SceneDelegate.swift */; };
 		ECB0B679246583EF005DBBD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB0B677246583EF005DBBD0 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		EC233446246584A40096D90E /* MainTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableVC.swift; sourceTree = "<group>"; };
+		EC568B702465BBE90093F431 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		ECB0B66E246583EF005DBBD0 /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB0B671246583EF005DBBD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECB0B673246583EF005DBBD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				ECB0B67A246583F3005DBBD0 /* Assets.xcassets */,
 				ECB0B67C246583F3005DBBD0 /* LaunchScreen.storyboard */,
 				ECB0B67F246583F3005DBBD0 /* Info.plist */,
+				EC568B702465BBE90093F431 /* .gitignore */,
 			);
 			path = MyPlaces;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC568B712465BBE90093F431 /* .gitignore in Resources */,
 				ECB0B67E246583F3005DBBD0 /* LaunchScreen.storyboard in Resources */,
 				ECB0B67B246583F3005DBBD0 /* Assets.xcassets in Resources */,
 				ECB0B679246583EF005DBBD0 /* Main.storyboard in Resources */,
