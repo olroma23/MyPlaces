@@ -10,6 +10,8 @@
 		EC233447246584A40096D90E /* MainTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC233446246584A40096D90E /* MainTableVC.swift */; };
 		EC568B712465BBE90093F431 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EC568B702465BBE90093F431 /* .gitignore */; };
 		EC568B732465F5BE0093F431 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC568B722465F5BE0093F431 /* CustomTableViewCell.swift */; };
+		EC568B7524660E680093F431 /* MyPlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC568B7424660E680093F431 /* MyPlacesModel.swift */; };
+		EC568B79246745300093F431 /* NewPlaceTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC568B78246745300093F431 /* NewPlaceTableVC.swift */; };
 		ECB0B672246583EF005DBBD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0B671246583EF005DBBD0 /* AppDelegate.swift */; };
 		ECB0B674246583EF005DBBD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0B673246583EF005DBBD0 /* SceneDelegate.swift */; };
 		ECB0B679246583EF005DBBD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB0B677246583EF005DBBD0 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		EC233446246584A40096D90E /* MainTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableVC.swift; sourceTree = "<group>"; };
 		EC568B702465BBE90093F431 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EC568B722465F5BE0093F431 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		EC568B7424660E680093F431 /* MyPlacesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlacesModel.swift; sourceTree = "<group>"; };
+		EC568B78246745300093F431 /* NewPlaceTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableVC.swift; sourceTree = "<group>"; };
 		ECB0B66E246583EF005DBBD0 /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB0B671246583EF005DBBD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECB0B673246583EF005DBBD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				EC233446246584A40096D90E /* MainTableVC.swift */,
+				EC568B78246745300093F431 /* NewPlaceTableVC.swift */,
+				EC568B7424660E680093F431 /* MyPlacesModel.swift */,
 				ECB0B677246583EF005DBBD0 /* Main.storyboard */,
 				EC568B722465F5BE0093F431 /* CustomTableViewCell.swift */,
 				ECB0B671246583EF005DBBD0 /* AppDelegate.swift */,
@@ -145,9 +151,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC568B7524660E680093F431 /* MyPlacesModel.swift in Sources */,
 				ECB0B672246583EF005DBBD0 /* AppDelegate.swift in Sources */,
 				EC233447246584A40096D90E /* MainTableVC.swift in Sources */,
 				EC568B732465F5BE0093F431 /* CustomTableViewCell.swift in Sources */,
+				EC568B79246745300093F431 /* NewPlaceTableVC.swift in Sources */,
 				ECB0B674246583EF005DBBD0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
