@@ -28,7 +28,7 @@ class MainTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places.isEmpty ? 0 : places.count
     }
- 
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
@@ -52,11 +52,26 @@ class MainTableVC: UITableViewController {
 // MARK: - Table view delegate
 // The appearence of the cell
 
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
     
+    
+    
+//    deleting rows
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+          if editingStyle == .delete {
+            let place = places[indexPath.row]
+            StorageManager.deleteObject(place)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+          }
+    }
+          
+      
     
 // MARK: - Segues
 // saving new elemnt 
