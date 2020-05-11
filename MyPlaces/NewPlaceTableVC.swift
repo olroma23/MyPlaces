@@ -16,19 +16,16 @@ class NewPlaceTableVC: UITableViewController {
     @IBOutlet weak var typeTF: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
-    var newPlace: Place?
-   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.tableFooterView = UIView()
-        
         saveButton.isEnabled = false
-        
         nameTF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
     
-//    showing the menu, when the image is tapped
+    //    showing the menu, when the image is tapped
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             let actionSheet = UIAlertController(title: nil,
@@ -38,7 +35,7 @@ class NewPlaceTableVC: UITableViewController {
             let camera = UIAlertAction(title: "Camera", style: .default) { _ in
                 self.chooseImagePicker(source: .camera)
             }
-   
+            
             let photo = UIAlertAction(title: "Photo", style: .default) { _ in
                 self.chooseImagePicker(source: .photoLibrary)
             }
@@ -55,10 +52,15 @@ class NewPlaceTableVC: UITableViewController {
     }
     
     
-//   adding a new row to the table
-    func saveNewPlace() {
-        newPlace = Place(name: nameTF.text!, location: locationTF.text, type: typeTF.text, defImagePath: nil, image: imageOfPlace.image)
-    }
+//       adding a new row to the table
+        func saveNewPlace() {
+                        
+            let imageData = imageOfPlace.image?.pngData()
+            
+            let newPlace = Place(name: nameTF.text!, location: locationTF.text, type: typeTF.text, imageData: imageData)
+            
+            StorageManager.saveObject(newPlace)
+        }
 }
 
 
@@ -100,4 +102,3 @@ extension NewPlaceTableVC: UIImagePickerControllerDelegate, UINavigationControll
         dismiss(animated: true, completion: nil)
     }
 }
-

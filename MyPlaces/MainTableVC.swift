@@ -7,48 +7,46 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainTableVC: UITableViewController {
     
-    var places = Place.getPlaces()
+    var places: Results<Place>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "My Places"
+        
+        places = realm.objects(Place.self)
         
     }
 
-    // MARK: - Table view data source
-    // The filling of the table
+//     MARK: - Table view data source
+//     The filling of the table
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.count
+        return places.isEmpty ? 0 : places.count
     }
  
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-        
+
         let place = places[indexPath.row]
-        
+
         cell.nameLabel.text = place.name
         cell.locationLabel.text = place.location
         cell.typeLabel.text = place.type
         
-        if place.image == nil {
-            cell.imageOfPlace.image = UIImage(named: place.defImagePath!)
-        } else {
-            cell.imageOfPlace.image = place.image
-        }
-        
+        cell.imageOfPlace.image = UIImage(data: place.imageData!)
+
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.width / 2
         cell.imageOfPlace.clipsToBounds = true
-        
+
 
         return cell
-  
+
     }
 
 // MARK: - Table view delegate
@@ -66,10 +64,9 @@ class MainTableVC: UITableViewController {
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         guard let newPlaceVC = segue.source as? NewPlaceTableVC else { return }
         newPlaceVC.saveNewPlace()
-        places.append(newPlaceVC.newPlace!)
         tableView.reloadData()
     }
-    
+
     @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
         
     }
