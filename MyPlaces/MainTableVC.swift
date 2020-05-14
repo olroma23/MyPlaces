@@ -11,8 +11,17 @@ import RealmSwift
 
 class MainTableVC: UITableViewController {
     
-    var places: Results<Place>!
-    var ascendingSorting = true
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var places: Results<Place>!
+    private var filteredPlaces: Results<Place>!
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var ascendingSorting = true
+    private var isFiltering: Bool {
+        searchController.isActive && !searchBarIsEmpty
+    }
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var sortBarButton: UIBarButtonItem!
@@ -22,6 +31,13 @@ class MainTableVC: UITableViewController {
         self.title = "My Places"
         
         places = realm.objects(Place.self)
+        
+//        search controller setup
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
         
     }
     
@@ -50,14 +66,23 @@ class MainTableVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredPlaces.count
+        }
+        
         return places.isEmpty ? 0 : places.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-
-        let place = places[indexPath.row]
+        var place = Place()
+        
+        if isFiltering {
+            place = filteredPlaces[indexPath.row]
+        } else {
+            place = places[indexPath.row]
+        }
 
         cell.nameLabel.text = place.name
         cell.locationLabel.text = place.location
@@ -68,9 +93,7 @@ class MainTableVC: UITableViewController {
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.width / 2
         cell.imageOfPlace.clipsToBounds = true
 
-
         return cell
-
     }
 
 // MARK: - Table view delegate
@@ -113,11 +136,31 @@ class MainTableVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showDetail" else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let place = places[indexPath.row]
+        var place = Place()
+        
+        if isFiltering {
+            place = filteredPlaces[indexPath.row]
+        } else {
+            place = places[indexPath.row]
+        }
+        
         let newPlaceVC = segue.destination as! NewPlaceTableVC
         newPlaceVC.currentPlace = place
     }
+}
+
+
+extension MainTableVC: UISearchResultsUpdating {
     
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredPlaces = places.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText)
+        
+        tableView.reloadData()
+    }
 }
  
  

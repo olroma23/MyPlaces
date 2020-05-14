@@ -267,6 +267,28 @@
                                             <constraint firstItem="qah-3l-DKJ" firstAttribute="top" secondItem="RSK-6M-Ei4" secondAttribute="top" constant="8" id="nOV-lj-Pdg"/>
                                         </constraints>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="ZH0-3W-oFu">
+                                        <rect key="frame" x="0.0" y="478" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZH0-3W-oFu" id="jrG-c9-xoJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="110" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T5F-kF-gNn" customClass="RatingControll" customModule="MyPlaces" customModuleProvider="target">
+                                                    <rect key="frame" x="81" y="48" width="252" height="44"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="T5F-kF-gNn" firstAttribute="centerY" secondItem="jrG-c9-xoJ" secondAttribute="centerY" id="5vD-w2-erT"/>
+                                                <constraint firstItem="T5F-kF-gNn" firstAttribute="centerX" secondItem="jrG-c9-xoJ" secondAttribute="centerX" id="mlY-Hr-2MF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -291,6 +313,7 @@
                         <outlet property="imageOfPlace" destination="k6B-m4-ak0" id="37w-eX-jnQ"/>
                         <outlet property="locationTF" destination="qb1-AB-hCM" id="PVA-zX-UaG"/>
                         <outlet property="nameTF" destination="8nf-lm-Fyw" id="rVt-we-r4j"/>
+                        <outlet property="ratingControl" destination="T5F-kF-gNn" id="rba-Fg-sll"/>
                         <outlet property="saveButton" destination="VVG-08-EKC" id="ZGc-tk-VbJ"/>
                         <outlet property="typeTF" destination="BUb-pp-SWl" id="GOY-U2-umE"/>
                     </connections>

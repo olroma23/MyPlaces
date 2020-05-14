@@ -13,6 +13,7 @@
 		EC568B732465F5BE0093F431 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC568B722465F5BE0093F431 /* CustomTableViewCell.swift */; };
 		EC568B7524660E680093F431 /* MyPlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC568B7424660E680093F431 /* MyPlacesModel.swift */; };
 		EC568B79246745300093F431 /* NewPlaceTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC568B78246745300093F431 /* NewPlaceTableVC.swift */; };
+		EC770B71246D76560045B093 /* RatingControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC770B70246D76560045B093 /* RatingControll.swift */; };
 		ECA78BA0246961CE004881E7 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA78B9F246961CE004881E7 /* StorageManager.swift */; };
 		ECB0B672246583EF005DBBD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0B671246583EF005DBBD0 /* AppDelegate.swift */; };
 		ECB0B674246583EF005DBBD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0B673246583EF005DBBD0 /* SceneDelegate.swift */; };
@@ -30,6 +31,7 @@
 		EC568B722465F5BE0093F431 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		EC568B7424660E680093F431 /* MyPlacesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlacesModel.swift; sourceTree = "<group>"; };
 		EC568B78246745300093F431 /* NewPlaceTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableVC.swift; sourceTree = "<group>"; };
+		EC770B70246D76560045B093 /* RatingControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControll.swift; sourceTree = "<group>"; };
 		ECA78B9F246961CE004881E7 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		ECB0B66E246583EF005DBBD0 /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB0B671246583EF005DBBD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				EC233446246584A40096D90E /* MainTableVC.swift */,
+				EC770B70246D76560045B093 /* RatingControll.swift */,
 				EC568B78246745300093F431 /* NewPlaceTableVC.swift */,
 				EC568B7424660E680093F431 /* MyPlacesModel.swift */,
 				ECA78B9F246961CE004881E7 /* StorageManager.swift */,
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC568B7524660E680093F431 /* MyPlacesModel.swift in Sources */,
+				EC770B71246D76560045B093 /* RatingControll.swift in Sources */,
 				ECB0B672246583EF005DBBD0 /* AppDelegate.swift in Sources */,
 				EC233447246584A40096D90E /* MainTableVC.swift in Sources */,
 				ECA78BA0246961CE004881E7 /* StorageManager.swift in Sources */,

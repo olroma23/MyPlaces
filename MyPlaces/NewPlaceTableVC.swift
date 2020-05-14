@@ -10,13 +10,14 @@ import UIKit
 
 class NewPlaceTableVC: UITableViewController {
     
+    var currentPlace: Place!
+    
     @IBOutlet weak var imageOfPlace: UIImageView!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var locationTF: UITextField!
     @IBOutlet weak var typeTF: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    var currentPlace: Place?
+    @IBOutlet weak var ratingControl: RatingControll!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,11 @@ class NewPlaceTableVC: UITableViewController {
         
         let imageData = imageOfPlace.image?.pngData()
         
-        let newPlace = Place(name: nameTF.text!, location: locationTF.text, type: typeTF.text, imageData: imageData)
+        let newPlace = Place(name: nameTF.text!,
+                             location: locationTF.text,
+                             type: typeTF.text,
+                             imageData: imageData,
+                             rating: Double(ratingControl.rating))
         
         if currentPlace != nil {
             try! realm.write {
@@ -68,6 +73,7 @@ class NewPlaceTableVC: UITableViewController {
                 currentPlace?.location = newPlace.location
                 currentPlace?.type = newPlace.type
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             StorageManager.saveObject(newPlace)
@@ -78,11 +84,14 @@ class NewPlaceTableVC: UITableViewController {
     private func setupEditScreen() {
         guard currentPlace != nil else { return }
         guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+        
         imageOfPlace.image = image
         imageOfPlace.contentMode = .scaleAspectFill
         nameTF.text = currentPlace?.name
         locationTF.text = currentPlace?.location
         typeTF.text = currentPlace?.type
+        ratingControl.rating = Int(currentPlace.rating)
+        
         setupNavigationBar()
     }
     
