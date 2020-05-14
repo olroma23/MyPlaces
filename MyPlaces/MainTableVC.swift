@@ -12,6 +12,10 @@ import RealmSwift
 class MainTableVC: UITableViewController {
     
     var places: Results<Place>!
+    var ascendingSorting = true
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var sortBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,26 @@ class MainTableVC: UITableViewController {
         places = realm.objects(Place.self)
         
     }
+    
+    @IBAction func reversedSorting(_ sender: UIBarButtonItem) {
+        ascendingSorting.toggle()
+        sorting()
+    }
+    
+    
+    @IBAction func selectSorting(_ sender: UISegmentedControl) {
+        sorting()
+    }
+    
+    private func sorting() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
+              } else {
+                  places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
+              }
+        tableView.reloadData()
+    }
+    
 
 //     MARK: - Table view data source
 //     The filling of the table
@@ -78,11 +102,22 @@ class MainTableVC: UITableViewController {
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         guard let newPlaceVC = segue.source as? NewPlaceTableVC else { return }
-        newPlaceVC.saveNewPlace()
+        newPlaceVC.savePlace()
         tableView.reloadData()
     }
 
     @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showDetail" else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        let place = places[indexPath.row]
+        let newPlaceVC = segue.destination as! NewPlaceTableVC
+        newPlaceVC.currentPlace = place
+    }
+    
 }
+ 
+ 

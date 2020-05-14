@@ -14,9 +14,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="jtT-zf-j9D">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Date"/>
+                                <segment title="Name"/>
+                            </segments>
+                            <connections>
+                                <action selector="selectSorting:" destination="lzV-k5-uXN" eventType="valueChanged" id="Lga-hs-R8L"/>
+                            </connections>
+                        </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="hma-ZW-Oew" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="85"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hma-ZW-Oew" id="a9W-PB-FNl" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
@@ -80,6 +91,7 @@
                                     <outlet property="locationLabel" destination="5yV-oJ-Vai" id="c8R-Gq-3ha"/>
                                     <outlet property="nameLabel" destination="B2K-to-Ro6" id="C6V-fS-Qkp"/>
                                     <outlet property="typeLabel" destination="PIp-Ki-gUD" id="13q-TO-AHf"/>
+                                    <segue destination="udp-8j-aUv" kind="show" identifier="showDetail" id="k8D-nn-2y8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -89,12 +101,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="GzF-gl-Uo2">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.up.chevron.down" catalog="system" id="UWz-lM-K7h">
+                            <connections>
+                                <action selector="reversedSorting:" destination="lzV-k5-uXN" id="Ajw-Nx-jf6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xWW-RT-lO3">
                             <connections>
                                 <segue destination="NAI-Eg-Kia" kind="presentation" modalPresentationStyle="automatic" modalTransitionStyle="coverVertical" id="tsf-jd-fOv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="jtT-zf-j9D" id="tZ4-yV-ouW"/>
+                        <outlet property="sortBarButton" destination="UWz-lM-K7h" id="hgh-KQ-Pml"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3m-za-H4z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,7 +126,7 @@
             <objects>
                 <tableViewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="udp-8j-aUv" customClass="NewPlaceTableVC" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZkS-Um-05c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -314,7 +335,11 @@
             <point key="canvasLocation" x="1417" y="123"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="k8D-nn-2y8"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="chevron.up.chevron.down" catalog="system" width="128" height="128"/>
         <image name="interface" width="256" height="256"/>
     </resources>
 </document>

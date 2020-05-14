@@ -16,11 +16,14 @@ class NewPlaceTableVC: UITableViewController {
     @IBOutlet weak var typeTF: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    var currentPlace: Place?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
+        setupEditScreen()
         nameTF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
@@ -52,15 +55,43 @@ class NewPlaceTableVC: UITableViewController {
     }
     
     
-//       adding a new row to the table
-        func saveNewPlace() {
-                        
-            let imageData = imageOfPlace.image?.pngData()
-            
-            let newPlace = Place(name: nameTF.text!, location: locationTF.text, type: typeTF.text, imageData: imageData)
-            
+    //       adding a new row to the table
+    func savePlace() {
+        
+        let imageData = imageOfPlace.image?.pngData()
+        
+        let newPlace = Place(name: nameTF.text!, location: locationTF.text, type: typeTF.text, imageData: imageData)
+        
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.location = newPlace.location
+                currentPlace?.type = newPlace.type
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
             StorageManager.saveObject(newPlace)
         }
+    }
+    
+    
+    private func setupEditScreen() {
+        guard currentPlace != nil else { return }
+        guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+        imageOfPlace.image = image
+        imageOfPlace.contentMode = .scaleAspectFill
+        nameTF.text = currentPlace?.name
+        locationTF.text = currentPlace?.location
+        typeTF.text = currentPlace?.type
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.leftBarButtonItem = nil
+        title = nameTF.text
+        saveButton.isEnabled = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
 }
 
 
