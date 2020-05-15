@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Cosmos
 
 class NewPlaceTableVC: UITableViewController {
     
     var currentPlace: Place!
+    var currentRating = 0.0
     
+    @IBOutlet weak var cosmosView: CosmosView!
     @IBOutlet weak var imageOfPlace: UIImageView!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var locationTF: UITextField!
@@ -26,6 +29,11 @@ class NewPlaceTableVC: UITableViewController {
         saveButton.isEnabled = false
         setupEditScreen()
         nameTF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
+        cosmosView.settings.fillMode = .half
+        cosmosView.didTouchCosmos = {rating in
+            self.currentRating = rating
+        }
     }
     
     
@@ -65,7 +73,7 @@ class NewPlaceTableVC: UITableViewController {
                              location: locationTF.text,
                              type: typeTF.text,
                              imageData: imageData,
-                             rating: Double(ratingControl.rating))
+                             rating: currentRating)
         
         if currentPlace != nil {
             try! realm.write {
@@ -90,7 +98,7 @@ class NewPlaceTableVC: UITableViewController {
         nameTF.text = currentPlace?.name
         locationTF.text = currentPlace?.location
         typeTF.text = currentPlace?.type
-        ratingControl.rating = Int(currentPlace.rating)
+        cosmosView.rating = currentPlace.rating
         
         setupNavigationBar()
     }
@@ -101,6 +109,19 @@ class NewPlaceTableVC: UITableViewController {
         saveButton.isEnabled = true
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    // MARK: Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showMap" else { return }
+        let mapVC = segue.destination as! MapVC
+        mapVC.place.name = nameTF.text!
+        mapVC.place.location = locationTF.text!
+        mapVC.place.type = typeTF.text!
+        mapVC.place.imageData = imageOfPlace.image?.pngData()
+    }
+
+    
 }
 
 
@@ -120,6 +141,7 @@ extension NewPlaceTableVC: UITextFieldDelegate {
         }
     }
 }
+
 
 
 // MARK: Setting the image
