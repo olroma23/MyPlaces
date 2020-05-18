@@ -21,6 +21,7 @@
 		ECB0B67E246583F3005DBBD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB0B67C246583F3005DBBD0 /* LaunchScreen.storyboard */; };
 		ECEAFE47246E936C00169988 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAFE46246E936C00169988 /* MapVC.swift */; };
 		ECF4ABD024715442003A4602 /* Pods_MyPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154332B42F86677C7B34108F /* Pods_MyPlaces.framework */; };
+		ECF4ABD62472D12A003A4602 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF4ABD52472D12A003A4602 /* MapManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		ECF4ABBE2471527B003A4602 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF4ABC124715281003A4602 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF4ABC424715285003A4602 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF4ABD52472D12A003A4602 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,22 +102,63 @@
 		ECB0B670246583EF005DBBD0 /* MyPlaces */ = {
 			isa = PBXGroup;
 			children = (
-				ECEAFE46246E936C00169988 /* MapVC.swift */,
-				EC233446246584A40096D90E /* MainTableVC.swift */,
-				EC770B70246D76560045B093 /* RatingControll.swift */,
-				EC568B78246745300093F431 /* NewPlaceTableVC.swift */,
-				EC568B7424660E680093F431 /* MyPlacesModel.swift */,
-				ECA78B9F246961CE004881E7 /* StorageManager.swift */,
-				ECB0B677246583EF005DBBD0 /* Main.storyboard */,
-				EC568B722465F5BE0093F431 /* CustomTableViewCell.swift */,
-				ECB0B671246583EF005DBBD0 /* AppDelegate.swift */,
-				ECB0B673246583EF005DBBD0 /* SceneDelegate.swift */,
-				ECB0B67A246583F3005DBBD0 /* Assets.xcassets */,
-				ECB0B67C246583F3005DBBD0 /* LaunchScreen.storyboard */,
-				ECB0B67F246583F3005DBBD0 /* Info.plist */,
+				ECF4ABD92472E6D6003A4602 /* View Controllers */,
+				ECF4ABDB2472E728003A4602 /* Helpers */,
+				ECF4ABDD2472E779003A4602 /* Interface builders */,
+				ECF4ABDC2472E747003A4602 /* Support Files */,
+				ECF4ABDA2472E70F003A4602 /* Models */,
 				EC568B702465BBE90093F431 /* .gitignore */,
+				ECB0B67F246583F3005DBBD0 /* Info.plist */,
 			);
 			path = MyPlaces;
+			sourceTree = "<group>";
+		};
+		ECF4ABD92472E6D6003A4602 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EC233446246584A40096D90E /* MainTableVC.swift */,
+				EC568B78246745300093F431 /* NewPlaceTableVC.swift */,
+				ECEAFE46246E936C00169988 /* MapVC.swift */,
+				EC568B722465F5BE0093F431 /* CustomTableViewCell.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		ECF4ABDA2472E70F003A4602 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EC568B7424660E680093F431 /* MyPlacesModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ECF4ABDB2472E728003A4602 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ECF4ABD52472D12A003A4602 /* MapManager.swift */,
+				ECA78B9F246961CE004881E7 /* StorageManager.swift */,
+				EC770B70246D76560045B093 /* RatingControll.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ECF4ABDC2472E747003A4602 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ECB0B673246583EF005DBBD0 /* SceneDelegate.swift */,
+				ECB0B671246583EF005DBBD0 /* AppDelegate.swift */,
+				ECB0B67A246583F3005DBBD0 /* Assets.xcassets */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		ECF4ABDD2472E779003A4602 /* Interface builders */ = {
+			isa = PBXGroup;
+			children = (
+				ECB0B677246583EF005DBBD0 /* Main.storyboard */,
+				ECB0B67C246583F3005DBBD0 /* LaunchScreen.storyboard */,
+			);
+			path = "Interface builders";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +283,7 @@
 				EC233447246584A40096D90E /* MainTableVC.swift in Sources */,
 				ECA78BA0246961CE004881E7 /* StorageManager.swift in Sources */,
 				EC568B732465F5BE0093F431 /* CustomTableViewCell.swift in Sources */,
+				ECF4ABD62472D12A003A4602 /* MapManager.swift in Sources */,
 				EC568B79246745300093F431 /* NewPlaceTableVC.swift in Sources */,
 				ECEAFE47246E936C00169988 /* MapVC.swift in Sources */,
 				ECB0B674246583EF005DBBD0 /* SceneDelegate.swift in Sources */,
