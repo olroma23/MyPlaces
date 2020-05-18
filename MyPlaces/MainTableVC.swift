@@ -83,8 +83,6 @@ class MainTableVC: UITableViewController {
         cell.locationLabel.text = place.location
         cell.typeLabel.text = place.type
         
-        cell.imageOfPlace.image = UIImage(data: place.imageData!)
-
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.width / 2
         cell.imageOfPlace.clipsToBounds = true
         
@@ -137,7 +135,6 @@ class MainTableVC: UITableViewController {
         newPlaceVC.currentPlace = place
     }
 }
-
 
 extension MainTableVC: UISearchResultsUpdating {
     

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D561152BB5A0DC05A0CF1635 /* Pods_MyPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154332B42F86677C7B34108F /* Pods_MyPlaces.framework */; };
 		EC233447246584A40096D90E /* MainTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC233446246584A40096D90E /* MainTableVC.swift */; };
 		EC568B712465BBE90093F431 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EC568B702465BBE90093F431 /* .gitignore */; };
 		EC568B732465F5BE0093F431 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC568B722465F5BE0093F431 /* CustomTableViewCell.swift */; };
@@ -21,6 +20,7 @@
 		ECB0B67B246583F3005DBBD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECB0B67A246583F3005DBBD0 /* Assets.xcassets */; };
 		ECB0B67E246583F3005DBBD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB0B67C246583F3005DBBD0 /* LaunchScreen.storyboard */; };
 		ECEAFE47246E936C00169988 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAFE46246E936C00169988 /* MapVC.swift */; };
+		ECF4ABD024715442003A4602 /* Pods_MyPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154332B42F86677C7B34108F /* Pods_MyPlaces.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +42,9 @@
 		ECB0B67D246583F3005DBBD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECB0B67F246583F3005DBBD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECEAFE46246E936C00169988 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		ECF4ABBE2471527B003A4602 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF4ABC124715281003A4602 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF4ABC424715285003A4602 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D561152BB5A0DC05A0CF1635 /* Pods_MyPlaces.framework in Frameworks */,
+				ECF4ABD024715442003A4602 /* Pods_MyPlaces.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +62,9 @@
 		0E7125E37433F740795B26C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECF4ABC424715285003A4602 /* RealmSwift.framework */,
+				ECF4ABC124715281003A4602 /* Realm.framework */,
+				ECF4ABBE2471527B003A4602 /* Cosmos.framework */,
 				154332B42F86677C7B34108F /* Pods_MyPlaces.framework */,
 			);
 			name = Frameworks;
@@ -312,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -366,7 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -384,11 +390,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TA55CRFVW8;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MyPlaces;
+				PRODUCT_BUNDLE_IDENTIFIER = tw3ee.MyPlacesm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -403,11 +410,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TA55CRFVW8;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MyPlaces;
+				PRODUCT_BUNDLE_IDENTIFIER = tw3ee.MyPlacesm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

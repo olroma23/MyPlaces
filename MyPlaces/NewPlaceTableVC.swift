@@ -24,7 +24,7 @@ class NewPlaceTableVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Add new Place"
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
         setupEditScreen()
@@ -66,9 +66,7 @@ class NewPlaceTableVC: UITableViewController {
     
     //       adding a new row to the table
     func savePlace() {
-        
         let imageData = imageOfPlace.image?.pngData()
-        
         let newPlace = Place(name: nameTF.text!,
                              location: locationTF.text,
                              type: typeTF.text,
@@ -88,13 +86,14 @@ class NewPlaceTableVC: UITableViewController {
         }
     }
     
-    
     private func setupEditScreen() {
         guard currentPlace != nil else { return }
-        guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+        guard
+            let data = currentPlace?.imageData,
+            let image = UIImage(data: data)
+            else { return }
         
         imageOfPlace.image = image
-        imageOfPlace.contentMode = .scaleAspectFill
         nameTF.text = currentPlace?.name
         locationTF.text = currentPlace?.location
         typeTF.text = currentPlace?.type
@@ -105,23 +104,32 @@ class NewPlaceTableVC: UITableViewController {
     
     private func setupNavigationBar() {
         navigationItem.leftBarButtonItem = nil
-        title = nameTF.text
         saveButton.isEnabled = true
-        navigationController?.navigationBar.prefersLargeTitles = true
+        if currentPlace != nil {
+            self.title = nameTF.text
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+        }
     }
+    
     
     // MARK: Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "showMap" else { return }
-        let mapVC = segue.destination as! MapVC
-        mapVC.place.name = nameTF.text!
-        mapVC.place.location = locationTF.text!
-        mapVC.place.type = typeTF.text!
-        mapVC.place.imageData = imageOfPlace.image?.pngData()
+        guard
+            let identifier = segue.identifier,
+            let mapVC = segue.destination as? MapVC
+            else { return }
+        
+        mapVC.incomeSegueId = identifier
+        mapVC.mapVCDelegate = self
+        
+        if identifier == "showMap" {
+            mapVC.place.name = nameTF.text!
+            mapVC.place.location = locationTF.text!
+            mapVC.place.type = typeTF.text!
+            mapVC.place.imageData = imageOfPlace.image?.pngData()
+        }
     }
-
-    
 }
 
 
@@ -143,7 +151,6 @@ extension NewPlaceTableVC: UITextFieldDelegate {
 }
 
 
-
 // MARK: Setting the image
 
 // Setting the new image view
@@ -162,5 +169,12 @@ extension NewPlaceTableVC: UIImagePickerControllerDelegate, UINavigationControll
         imageOfPlace.contentMode = .scaleAspectFill
         imageOfPlace.clipsToBounds = true
         dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension NewPlaceTableVC: MapVCDelegate {
+    func getAddress(_ address: String?) {
+        locationTF.text = address
     }
 }
